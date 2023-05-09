@@ -5,11 +5,11 @@ public class Main {
 
    public static void main(String[] args) {
 
-       MultiplicadorDeNumeros[] algoritmos = {
-               new Algoritmo1(),
-
-
-       };
+//       MultiplicadorDeNumeros[] algoritmos = {
+//               new Algoritmo1(),
+//
+//
+//       };
 
        generarNumero(10000);
 
@@ -18,13 +18,13 @@ public class Main {
 
        int[] result=null;
 
-       for (MultiplicadorDeNumeros algoritmo : algoritmos) {
-           result=algoritmo.multiplicar(numero, numero2);
-           for (int i = 0; i < result.length; i++) {
-               System.out.print(""+result[i]);
-           }
-
-       }
+//       for (MultiplicadorDeNumeros algoritmo : algoritmos) {
+//           result=algoritmo.multiplicar(numero, numero2);
+//           for (int i = 0; i < result.length; i++) {
+//               System.out.print(""+result[i]);
+//           }
+//
+//       }
 
 
 

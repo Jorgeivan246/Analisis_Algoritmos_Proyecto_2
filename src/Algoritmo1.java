@@ -1,6 +1,5 @@
-public class Algoritmo1 implements MultiplicadorDeNumeros {
+public class Algoritmo1 {
 
-    @Override
     public int[] multiplicar(int[] numero1, int[] numero2) {
         int tam = numero1.length + numero2.length;
         int[] resultado = new int [tam];
