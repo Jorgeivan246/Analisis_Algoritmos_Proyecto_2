@@ -4,41 +4,36 @@ import java.util.ArrayList;
 
 public class Main {
 
-   public static void main(String[] args) {
+    public static void main(String[] args) {
 
 
-       generarNumero(10000);
+        generarNumero(10000);
 
-       int[] numero = leerArchivo1(10000);
-       int[] numero2 = leerArchivo1(10000);
+        int[] numero = leerArchivo1(10000);
+        int[] numero2 = leerArchivo1(10000);
 
-       ArrayList<Integer> numero3 = leerArchivo2(10000);
-       ArrayList<Integer> numero4 = leerArchivo2(10000);
+        ArrayList<Integer> numero3 = leerArchivo2(10);
+        ArrayList<Integer> numero4 = leerArchivo2(10);
 
-       int[] result=null;
+        int[] result = null;
 
-
-
-        Algoritmo1 algo1 = new Algoritmo1();
+        Algoritmo8 algo6 = new Algoritmo8();
 
         Algoritmo2 algo2 = new Algoritmo2();
 
-       ArrayList<Integer> result2 = new ArrayList<>();
+        ArrayList<Integer> result2 = inicializarArrayList(numero3.size() + numero4.size());
 
-       result=algo1.multiplicar(numero,numero2);
+        result2 = algo6.multiplicar(numero3, numero4, result2);
 
-       for (int i = 0; i < result.length ; i++) {
+        imprimirArryList(result2);
 
-           System.out.print(" " + result[i]);
-       }
-
-       result2=algo2.multiplicar(numero3,numero4);
-       System.out.println("\n");
-
-       for (int i = 0; i < result2.size() ; i++) {
-
-           System.out.print(" " + result2.get(i));
-       }
+//       result2=algo2.multiplicar(numero3,numero4);
+//       System.out.println("\n");
+//
+//       for (Integer integer : result2) {
+//
+//           System.out.print(" " + integer);
+//       }
 
 
     }
@@ -61,30 +56,29 @@ public class Main {
         return result;
     }
 
-    public  static void generarNumero(int limiteNumero)
-    {
-        String numeroAEscribir="";
+    public static void generarNumero(int limiteNumero) {
+        String numeroAEscribir = "";
 
-        for (int i = 0; i <limiteNumero ; i++) {
-            numeroAEscribir=numeroAEscribir+"8";
+        for (int i = 0; i < limiteNumero; i++) {
+            numeroAEscribir = numeroAEscribir + "8";
         }
-        BigInteger bigInt=new BigInteger(numeroAEscribir);
+        BigInteger bigInt = new BigInteger(numeroAEscribir);
         generarArchivo(bigInt);
 
     }
 
     public static int[] leerArchivo1(int cantidadCifras) {
 
-       String rutaArchivo="src/numeroPrueba/numero_"+cantidadCifras+"_cifras"+".txt";
+        String rutaArchivo = "src/numeroPrueba/numero_" + cantidadCifras + "_cifras" + ".txt";
         BigInteger numero = null;
 
-        int[] numeroArreglo=null;
+        int[] numeroArreglo = null;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo));
             String linea = reader.readLine();
             numero = new BigInteger(linea);
 
-            numeroArreglo=convertBigIntegerToArray(numero);
+            numeroArreglo = convertBigIntegerToArray(numero);
             reader.close();
         } catch (IOException e) {
             System.out.println("Error al leer archivo.");
@@ -95,7 +89,7 @@ public class Main {
 
     public static ArrayList<Integer> leerArchivo2(int cantidadCifras) {
 
-        String rutaArchivo="src/numeroPrueba/numero_"+cantidadCifras+"_cifras"+".txt";
+        String rutaArchivo = "src/numeroPrueba/numero_" + cantidadCifras + "_cifras" + ".txt";
         BigInteger numero = null;
 
         ArrayList<Integer> result = new ArrayList<>();
@@ -104,7 +98,7 @@ public class Main {
             String linea = reader.readLine();
             numero = new BigInteger(linea);
 
-            result=convertBigIntegerToArrayList(numero);
+            result = convertBigIntegerToArrayList(numero);
             reader.close();
         } catch (IOException e) {
             System.out.println("Error al leer archivo.");
@@ -118,7 +112,7 @@ public class Main {
         int cantidadCifras = numero.toString().length();
 
 
-        String rutaArchivo="src/numeroPrueba/numero_"+cantidadCifras+"_cifras"+".txt";
+        String rutaArchivo = "src/numeroPrueba/numero_" + cantidadCifras + "_cifras" + ".txt";
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo));
             writer.write(numero.toString());
@@ -128,6 +122,21 @@ public class Main {
             System.out.println("Error al generar archivo.");
             e.printStackTrace();
         }
+    }
+
+    private static void imprimirArryList(ArrayList<Integer> result2) {
+        for (Integer integer : result2) {
+
+            System.out.print(" " + integer);
+        }
+    }
+
+    private static ArrayList<Integer> inicializarArrayList(int cantidadCifras) {
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0; i < cantidadCifras; i++) {
+            result.add(0);
+        }
+        return result;
     }
 
 }

@@ -1,0 +1,2 @@
+public class Algoritmo10 {
+}
