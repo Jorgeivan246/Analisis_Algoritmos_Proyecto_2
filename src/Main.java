@@ -23,23 +23,40 @@ public class Main {
 
         Algoritmo2 algo2 = new Algoritmo2();
 
+       ArrayList<Multiplicador> multipli = new ArrayList<>();
+
+       multipli.add(algo1);
+
+       multipli.add(algo1);
+
+       result= multipli.get(0).multiplicar(numero,numero2);
+
        ArrayList<Integer> result2 = new ArrayList<>();
 
-       result=algo1.multiplicar(numero,numero2);
+       result2=multipli.get(1).multiplicar(numero3,numero4);
+
+
+
+
 
        for (int i = 0; i < result.length ; i++) {
 
            System.out.print(" " + result[i]);
        }
 
-       result2=algo2.multiplicar(numero3,numero4);
-       System.out.println("\n");
+
+       System.out.println("otro \n");
 
        for (int i = 0; i < result2.size() ; i++) {
 
            System.out.print(" " + result2.get(i));
        }
 
+
+    }
+
+    public static void enviarDatosAlServidor()
+    {
 
     }
 

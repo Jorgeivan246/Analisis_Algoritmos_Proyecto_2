@@ -1,4 +1,4 @@
-public class Algoritmo1 {
+public class Algoritmo1 extends Multiplicador{
 
     public int[] multiplicar(int[] numero1, int[] numero2) {
         int tam = numero1.length + numero2.length;
