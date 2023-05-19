@@ -1,62 +1,102 @@
 import java.io.*;
 import java.math.BigInteger;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Main {
 
-   public static void main(String[] args) {
+    public static String direccion="https://script.google.com/macros/s/AKfycbz2AMqwtsuZptPKbuOr9PkLb4KfF_vDphXzxf3BPg-h2z1M5h5teaNe6DeHsXOCKe_dUw/exec?";
+
+   public static void main(String[] args) throws IOException {
 
 
        generarNumero(10000);
 
-       int[] numero = leerArchivo1(10000);
-       int[] numero2 = leerArchivo1(10000);
 
-       ArrayList<Integer> numero3 = leerArchivo2(10000);
-       ArrayList<Integer> numero4 = leerArchivo2(10000);
 
-       int[] result=null;
+       enviarDatosAlServidor();
 
+
+
+
+
+    }
+
+    public static void enviarDatosAlServidor() throws IOException {
+        int[] numero = leerArchivo1(10000);
+        int[] numero2 = leerArchivo1(10000);
+
+        ArrayList<Integer> numero3 = leerArchivo2(10000);
+        ArrayList<Integer> numero4 = leerArchivo2(10000);
+
+        int[] result=null;
+
+        ArrayList<Integer> result2 = new ArrayList<>();
 
 
         Algoritmo1 algo1 = new Algoritmo1();
 
         Algoritmo2 algo2 = new Algoritmo2();
 
-       ArrayList<Multiplicador> multipli = new ArrayList<>();
-
-       multipli.add(algo1);
-
-       multipli.add(algo1);
-
-       result= multipli.get(0).multiplicar(numero,numero2);
-
-       ArrayList<Integer> result2 = new ArrayList<>();
-
-       result2=multipli.get(1).multiplicar(numero3,numero4);
 
 
+        ArrayList<Object> algoritmos = new ArrayList<>();
+
+        algoritmos.add(algo1);
+
+        int k=0;
+
+        int j=0;
 
 
+        for (int i = 0; i <12 ; i++) {
 
-       for (int i = 0; i < result.length ; i++) {
+            switch(i)
+            {
+                case 0:
+                    long tiempoInicial = System.currentTimeMillis();
+                    result = algo1.multiplicar(numero, numero2);
+                    long tiempoFinal = System.currentTimeMillis();
+                    long tiempoTotal = tiempoFinal - tiempoInicial;
 
-           System.out.print(" " + result[i]);
-       }
+                    direccion=direccion+"id="+i+"co="+j;
+                    URL urlObject = new URL(direccion);
+                    HttpURLConnection connection = (HttpURLConnection) urlObject.openConnection();
+                    connection.setRequestMethod("GET");
 
+                    int responseCode = connection.getResponseCode();
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
+                        System.out.println("La solicitud se envió correctamente.");
+                    } else {
+                        System.out.println("Error al enviar la solicitud. Código de respuesta: " + responseCode);
+                    }
 
-       System.out.println("otro \n");
+                    connection.disconnect();
+                case 1:
+                    result2=algo2.multiplicar(numero3,numero4);
+                    break;
 
-       for (int i = 0; i < result2.size() ; i++) {
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
 
-           System.out.print(" " + result2.get(i));
-       }
+            }
 
+        }
 
-    }
-
-    public static void enviarDatosAlServidor()
-    {
 
     }
 

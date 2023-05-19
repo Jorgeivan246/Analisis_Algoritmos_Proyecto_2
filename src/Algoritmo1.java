@@ -1,4 +1,6 @@
-public class Algoritmo1 extends Multiplicador{
+import java.util.ArrayList;
+
+public class Algoritmo1 {
 
     public int[] multiplicar(int[] numero1, int[] numero2) {
         int tam = numero1.length + numero2.length;
@@ -25,4 +27,5 @@ public class Algoritmo1 extends Multiplicador{
         
         
     }
+
 }
