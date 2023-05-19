@@ -42,7 +42,9 @@ public class Main {
 
         Algoritmo1 algo1 = new Algoritmo1();
 
+        Algoritmo8 algo6 = new Algoritmo8();
         Algoritmo2 algo2 = new Algoritmo2();
+        Algoritmo10 algo10 = new Algoritmo10();
 
         long tiempoInicial = 0, tiempoTotal = 0, tiempoFinal = 0;
 
@@ -133,6 +135,15 @@ public class Main {
 
 
 
+
+    }
+
+    private static String arregloToStrin(int[] multiplicacionHindu) {
+        String result="";
+        for (int i = 0; i < multiplicacionHindu.length; i++) {
+            result=result+multiplicacionHindu[i];
+        }
+        return result;
     }
 
     public static ArrayList<Integer> convertBigIntegerToArrayList(BigInteger bigInt) {
@@ -219,6 +230,21 @@ public class Main {
             System.out.println("Error al generar archivo.");
             e.printStackTrace();
         }
+    }
+
+    private static void imprimirArryList(ArrayList<Integer> result2) {
+        for (Integer integer : result2) {
+
+            System.out.print(" " + integer);
+        }
+    }
+
+    private static ArrayList<Integer> inicializarArrayList(int cantidadCifras) {
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0; i < cantidadCifras; i++) {
+            result.add(0);
+        }
+        return result;
     }
 
 }
