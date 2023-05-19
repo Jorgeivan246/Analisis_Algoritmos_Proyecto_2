@@ -1,37 +1,41 @@
 import java.io.*;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
 public class Main {
 
-    public static String direccion="https://script.google.com/macros/s/AKfycbz2AMqwtsuZptPKbuOr9PkLb4KfF_vDphXzxf3BPg-h2z1M5h5teaNe6DeHsXOCKe_dUw/exec?";
+    public static String url = "https://script.google.com/macros/s/AKfycbzh_b_YyI2rFMjclr0rETUQhbgg4PczRm1_-ROBvazwsnBu-vpJFVVv6M9QSlszxQjCBA/exec?";
 
-   public static void main(String[] args) throws IOException {
+    public static ArrayList<Integer> nDigitosLeer = new ArrayList();
 
-
-       generarNumero(10000);
-
+    public static void main(String[] args) throws IOException {
 
 
-       enviarDatosAlServidor();
+        //   generarNumero(90000);
 
 
-
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        enviarDatosAlServidor();
 
 
     }
 
     public static void enviarDatosAlServidor() throws IOException {
-        int[] numero = leerArchivo1(10000);
-        int[] numero2 = leerArchivo1(10000);
 
-        ArrayList<Integer> numero3 = leerArchivo2(10000);
-        ArrayList<Integer> numero4 = leerArchivo2(10000);
 
-        int[] result=null;
+        ArrayList<Integer> numero3 = new ArrayList<>();
+
+
+        int[] result = null;
 
         ArrayList<Integer> result2 = new ArrayList<>();
 
@@ -40,62 +44,93 @@ public class Main {
 
         Algoritmo2 algo2 = new Algoritmo2();
 
+        long tiempoInicial = 0, tiempoTotal = 0, tiempoFinal = 0;
+
+
+        int[] numero = null;
 
 
         ArrayList<Object> algoritmos = new ArrayList<>();
 
         algoritmos.add(algo1);
 
-        int k=0;
+        int fila = 9;
 
-        int j=0;
+        int columna = 4;
+
+        String direccion = "";
+
+        long nDigitos = 0;
+
+        String and="&";
+
+        for (int i = 0; i < 2; i++) {
 
 
-        for (int i = 0; i <12 ; i++) {
+            for (int l = 0; l < nDigitosLeer.size() ; l++) {
 
-            switch(i)
-            {
-                case 0:
-                    long tiempoInicial = System.currentTimeMillis();
-                    result = algo1.multiplicar(numero, numero2);
-                    long tiempoFinal = System.currentTimeMillis();
-                    long tiempoTotal = tiempoFinal - tiempoInicial;
 
-                    direccion=direccion+"id="+i+"co="+j;
-                    URL urlObject = new URL(direccion);
-                    HttpURLConnection connection = (HttpURLConnection) urlObject.openConnection();
-                    connection.setRequestMethod("GET");
+                switch (i) {
 
-                    int responseCode = connection.getResponseCode();
-                    if (responseCode == HttpURLConnection.HTTP_OK) {
-                        System.out.println("La solicitud se envió correctamente.");
-                    } else {
-                        System.out.println("Error al enviar la solicitud. Código de respuesta: " + responseCode);
-                    }
+                    case 0:
+                        numero = leerArchivo1(nDigitosLeer.get(l));
 
-                    connection.disconnect();
-                case 1:
-                    result2=algo2.multiplicar(numero3,numero4);
-                    break;
+                        System.out.println("Leyó el numero " + numero.length);
+                        tiempoInicial = System.currentTimeMillis();
+                        result = algo1.multiplicar(numero, numero);
+                        tiempoFinal = System.currentTimeMillis();
+                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial )/ 1000.0);
+                        nDigitos = nDigitosLeer.get(l);
+                        break;
+                    case 1:
+                        numero3 = leerArchivo2(nDigitosLeer.get(l));
+                        tiempoInicial = System.currentTimeMillis();
+                        result2 = algo2.multiplicar(numero3, numero3);
+                        tiempoFinal = System.currentTimeMillis();
+                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial )/ 1000.0);
+                        nDigitos = nDigitosLeer.get(l);
+                        break;
 
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        break;
 
+                }
+                direccion = url + "fi=" + fila+"&"+"co="+ columna+"&" +"ti="+tiempoTotal +"&"+ "ci=" + nDigitos;
+
+
+                System.out.println("Se envio " + direccion);
+
+                URL urlObject = new URL(direccion);
+                HttpURLConnection connection = (HttpURLConnection) urlObject.openConnection();
+                connection.setRequestMethod("GET");
+
+                int responseCode = connection.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    System.out.println("La solicitud se envió correctamente.");
+                } else {
+                    System.out.println("Error al enviar la solicitud. Código de respuesta: " + responseCode);
+                }
+
+                connection.disconnect();
+                columna=columna+2;
             }
+            columna=4;
+            fila++;
 
         }
+
 
 
     }
@@ -118,30 +153,29 @@ public class Main {
         return result;
     }
 
-    public  static void generarNumero(int limiteNumero)
-    {
-        String numeroAEscribir="";
+    public static void generarNumero(int limiteNumero) {
+        String numeroAEscribir = "";
 
-        for (int i = 0; i <limiteNumero ; i++) {
-            numeroAEscribir=numeroAEscribir+"8";
+        for (int i = 0; i < limiteNumero; i++) {
+            numeroAEscribir = numeroAEscribir + "8";
         }
-        BigInteger bigInt=new BigInteger(numeroAEscribir);
+        BigInteger bigInt = new BigInteger(numeroAEscribir);
         generarArchivo(bigInt);
 
     }
 
     public static int[] leerArchivo1(int cantidadCifras) {
 
-       String rutaArchivo="src/numeroPrueba/numero_"+cantidadCifras+"_cifras"+".txt";
+        String rutaArchivo = "src/numeroPrueba/numero_" + cantidadCifras + "_cifras" + ".txt";
         BigInteger numero = null;
 
-        int[] numeroArreglo=null;
+        int[] numeroArreglo = null;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo));
             String linea = reader.readLine();
             numero = new BigInteger(linea);
 
-            numeroArreglo=convertBigIntegerToArray(numero);
+            numeroArreglo = convertBigIntegerToArray(numero);
             reader.close();
         } catch (IOException e) {
             System.out.println("Error al leer archivo.");
@@ -152,7 +186,7 @@ public class Main {
 
     public static ArrayList<Integer> leerArchivo2(int cantidadCifras) {
 
-        String rutaArchivo="src/numeroPrueba/numero_"+cantidadCifras+"_cifras"+".txt";
+        String rutaArchivo = "src/numeroPrueba/numero_" + cantidadCifras + "_cifras" + ".txt";
         BigInteger numero = null;
 
         ArrayList<Integer> result = new ArrayList<>();
@@ -161,7 +195,7 @@ public class Main {
             String linea = reader.readLine();
             numero = new BigInteger(linea);
 
-            result=convertBigIntegerToArrayList(numero);
+            result = convertBigIntegerToArrayList(numero);
             reader.close();
         } catch (IOException e) {
             System.out.println("Error al leer archivo.");
@@ -175,7 +209,7 @@ public class Main {
         int cantidadCifras = numero.toString().length();
 
 
-        String rutaArchivo="src/numeroPrueba/numero_"+cantidadCifras+"_cifras"+".txt";
+        String rutaArchivo = "src/numeroPrueba/numero_" + cantidadCifras + "_cifras" + ".txt";
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo));
             writer.write(numero.toString());
