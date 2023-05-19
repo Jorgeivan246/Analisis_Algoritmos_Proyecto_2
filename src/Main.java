@@ -1,37 +1,138 @@
 import java.io.*;
 import java.math.BigInteger;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static String url = "https://script.google.com/macros/s/AKfycbzh_b_YyI2rFMjclr0rETUQhbgg4PczRm1_-ROBvazwsnBu-vpJFVVv6M9QSlszxQjCBA/exec?";
+
+    public static ArrayList<Integer> nDigitosLeer = new ArrayList();
+
+    public static void main(String[] args) throws IOException {
 
 
-        generarNumero(10000);
+        //   generarNumero(90000);
 
-        int[] numero = leerArchivo1(10);
-        int[] numero2 = leerArchivo1(100);
 
-        ArrayList<Integer> numero3 = leerArchivo2(10);
-        ArrayList<Integer> numero4 = leerArchivo2(10);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        nDigitosLeer.add(10000);
+        enviarDatosAlServidor();
+
+
+    }
+
+    public static void enviarDatosAlServidor() throws IOException {
+
+
+        ArrayList<Integer> numero3 = new ArrayList<>();
+
 
         int[] result = null;
+
+        ArrayList<Integer> result2 = new ArrayList<>();
+
+
+        Algoritmo1 algo1 = new Algoritmo1();
 
         Algoritmo8 algo6 = new Algoritmo8();
         Algoritmo2 algo2 = new Algoritmo2();
         Algoritmo10 algo10 = new Algoritmo10();
 
-//        ArrayList<Integer> result2 = inicializarArrayList(numero3.size() + numero4.size());
+        long tiempoInicial = 0, tiempoTotal = 0, tiempoFinal = 0;
 
-//        result2 = algo6.multiplicar(numero3, numero4, result2);
 
-//        imprimirArryList(result2);
+        int[] numero = null;
 
-//       result2=algo2.multiplicar(numero3,numero4);
 
-        String resultado = arregloToStrin(algo10.multiplicacionHindu(numero, numero2)) ;
+        ArrayList<Object> algoritmos = new ArrayList<>();
 
-        System.out.println("El resultado de la multiplicacion hindu es: "+resultado);
+        algoritmos.add(algo1);
+
+        int fila = 9;
+
+        int columna = 4;
+
+        String direccion = "";
+
+        long nDigitos = 0;
+
+        String and="&";
+
+        for (int i = 0; i < 2; i++) {
+
+
+            for (int l = 0; l < nDigitosLeer.size() ; l++) {
+
+
+                switch (i) {
+
+                    case 0:
+                        numero = leerArchivo1(nDigitosLeer.get(l));
+
+                        System.out.println("Leyó el numero " + numero.length);
+                        tiempoInicial = System.currentTimeMillis();
+                        result = algo1.multiplicar(numero, numero);
+                        tiempoFinal = System.currentTimeMillis();
+                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial )/ 1000.0);
+                        nDigitos = nDigitosLeer.get(l);
+                        break;
+                    case 1:
+                        numero3 = leerArchivo2(nDigitosLeer.get(l));
+                        tiempoInicial = System.currentTimeMillis();
+                        result2 = algo2.multiplicar(numero3, numero3);
+                        tiempoFinal = System.currentTimeMillis();
+                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial )/ 1000.0);
+                        nDigitos = nDigitosLeer.get(l);
+                        break;
+
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        break;
+
+                }
+                direccion = url + "fi=" + fila+"&"+"co="+ columna+"&" +"ti="+tiempoTotal +"&"+ "ci=" + nDigitos;
+
+
+                System.out.println("Se envio " + direccion);
+
+                URL urlObject = new URL(direccion);
+                HttpURLConnection connection = (HttpURLConnection) urlObject.openConnection();
+                connection.setRequestMethod("GET");
+
+                int responseCode = connection.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    System.out.println("La solicitud se envió correctamente.");
+                } else {
+                    System.out.println("Error al enviar la solicitud. Código de respuesta: " + responseCode);
+                }
+
+                connection.disconnect();
+                columna=columna+2;
+            }
+            columna=4;
+            fila++;
+
+        }
+
 
 
 

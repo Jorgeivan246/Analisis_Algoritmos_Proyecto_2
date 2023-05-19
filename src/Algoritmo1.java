@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Algoritmo1 {
 
     public int[] multiplicar(int[] numero1, int[] numero2) {
@@ -25,4 +27,5 @@ public class Algoritmo1 {
         
         
     }
+
 }

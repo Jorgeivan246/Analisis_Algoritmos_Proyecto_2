@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class Algoritmo4 {
 
+
+
     // Función que recibe dos ArrayList de Integer y devuelve otro ArrayList de Integer con el resultado de la multiplicación americana recursiva
     public ArrayList<Integer> multiplicar(ArrayList<Integer> a, ArrayList<Integer> b) {
         // Crear un ArrayList para almacenar el resultado
