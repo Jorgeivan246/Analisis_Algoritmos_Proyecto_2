@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Algoritmo11 {
 
-    public static int[] multiplicacion_egipcia(int[] k, int[] l) {
+    public int[] multiplicacion_egipcia(int[] k, int[] l) {
         BigInteger a = convertirArregloANumeroBig(k);
         BigInteger b = convertirArregloANumeroBig(l);
         List<BigInteger> potencias_2 = new ArrayList<>();
@@ -26,7 +26,7 @@ public class Algoritmo11 {
 
         return null;
     }
-    public static int[] bigIntegerToIntArray(BigInteger bigInt) {
+    public int[] bigIntegerToIntArray(BigInteger bigInt) {
         String bigIntStr = bigInt.toString();
         int[] intArray = new int[bigIntStr.length()];
         for (int i = 0; i < bigIntStr.length(); i++) {
@@ -35,7 +35,7 @@ public class Algoritmo11 {
         return intArray;
     }
 
-    private static BigInteger convertirArregloANumeroBig(int[] arr) {
+    private BigInteger convertirArregloANumeroBig(int[] arr) {
         BigInteger num = BigInteger.ZERO;
         for (int i = 0; i < arr.length; i++) {
             num = num.multiply(BigInteger.TEN).add(BigInteger.valueOf(arr[i]));

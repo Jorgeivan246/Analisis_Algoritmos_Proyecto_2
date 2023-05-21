@@ -2,7 +2,7 @@ import java.math.BigInteger;
 
 public class Algoritmo9 {
 
-    public static int[] Multi_Rusa(int []a, int []b){
+    public int[] Multi_Rusa(int []a, int []b){
 
         BigInteger i=convertirNumero(a);
         BigInteger j=convertirNumero(b);
@@ -22,7 +22,7 @@ public class Algoritmo9 {
         result=bigIntegerToIntArray(c);
         return result;
     }
-    public static int[] bigIntegerToIntArray(BigInteger number) {
+    public int[] bigIntegerToIntArray(BigInteger number) {
         String numberString = number.toString();
         int[] result = new int[numberString.length()];
 
@@ -32,7 +32,7 @@ public class Algoritmo9 {
 
         return result;
     }
-    public static BigInteger convertirNumero(int[] numeros) {
+    public BigInteger convertirNumero(int[] numeros) {
         StringBuilder numeroString = new StringBuilder();
 
         for (int i = 0; i < numeros.length; i++) {
