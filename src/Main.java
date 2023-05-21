@@ -42,6 +42,10 @@ public class Main {
 
         ArrayList<Integer> numero3 = new ArrayList<>();
 
+        int[] result = null;
+
+        ArrayList<Integer> result2 = new ArrayList<>();
+
         Algoritmo1 algo1 = new Algoritmo1();
 
         Algoritmo2 algo2 = new Algoritmo2();
