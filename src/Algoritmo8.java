@@ -2,8 +2,12 @@ import java.util.ArrayList;
 
 public class Algoritmo8 {
 
-    public ArrayList<Integer> multiplicar(ArrayList<Integer> numero1, ArrayList<Integer> numero2, ArrayList<Integer> resultado) {
-
+    public ArrayList<Integer> multiplicar(ArrayList<Integer> numero1, ArrayList<Integer> numero2) {
+        ArrayList<Integer> resultado = new ArrayList<Integer>();
+        // Inicializar el resultado con ceros
+        for (int i = 0; i < numero1.size() + numero2.size(); i++) {
+            resultado.add(0);
+        }
         return multiplicarAux(numero1, numero2, resultado, 0, 0);
     }
 

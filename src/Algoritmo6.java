@@ -5,8 +5,14 @@ public class Algoritmo6 {
     //Este método realiza la multiplicación inglesa iterativa de dos números representados como listas simples.
     //Recibe como parámetros el num1, el num2 y el resultado inicializado en ceros como un ArrayList de enteros.
     //Devuelve el resultado como un ArrayList de enteros.
-    public ArrayList<Integer> multiplicar(ArrayList<Integer>  num1, ArrayList<Integer>  num2, ArrayList<Integer> resultado) {
+    public ArrayList<Integer> multiplicar(ArrayList<Integer>  num1, ArrayList<Integer>  num2) {
 
+
+        ArrayList<Integer> resultado = new ArrayList<Integer>();
+        // Inicializar el resultado con ceros
+        for (int i = 0; i < num1.size() + num2.size(); i++) {
+            resultado.add(0);
+        }
         //Se recorren los dígitos del num2 de derecha a izquierda
         for (int i = 0; i < num2.size(); i++) {
             //Se recorren los dígitos del num1 de derecha a izquierda
