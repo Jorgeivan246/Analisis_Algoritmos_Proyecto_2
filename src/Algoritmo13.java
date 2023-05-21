@@ -6,7 +6,7 @@ public class Algoritmo13 {
      * @param num2 El segundo número a multiplicar.
      * @return El resultado de la multiplicación como una cadena de caracteres.
      */
-    public String multiplicarUsandoCadenas(String num1, String num2) {
+    private String multiplicarUsandoCadenas(String num1, String num2) {
         // Obtener la longitud de las cadenas
         int n1 = num1.length();
         int n2 = num2.length();
@@ -66,5 +66,37 @@ public class Algoritmo13 {
             runas[n-i-1] = temp;
         }
         return new String(runas);
+    }
+
+    public int[] multiplicar(int[] x, int[] y){
+        String resultado = multiplicarUsandoCadenas(convertirAString(x), convertirAString(y));
+        return convertirAArray(resultado);
+    }
+
+    /**
+     * Convierte una cadena de caracteres en un arreglo de enteros.
+     * @param resultado La cadena a convertir.
+     * @return El arreglo de enteros.
+     */
+    private int[] convertirAArray(String resultado) {
+        int n = resultado.length();
+        int[] arreglo = new int[n];
+        for (int i = 0; i < n; i++) {
+            arreglo[i] = resultado.charAt(i) - '0';
+        }
+        return arreglo;
+    }
+
+    /**
+     * Convierte un arreglo de enteros en una cadena de caracteres.
+     * @param x El arreglo de enteros a convertir.
+     * @return La cadena de caracteres.
+     */
+    private String convertirAString(int[] x) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = x.length - 1; i >= 0; i--) {
+            builder.append(x[i]);
+        }
+        return builder.toString();
     }
 }

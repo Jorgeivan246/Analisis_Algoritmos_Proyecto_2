@@ -1,65 +1,45 @@
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Algoritmo11 {
 
-    public static int[] multi(int[] numero1, int []numero2) {
-
-        int a=convertirArregloANumero(numero1), b=convertirArregloANumero(numero2);
-
-        List<Integer> powersOf2 = new ArrayList<>();
-        List<Integer> multiplesOfB = new ArrayList<>();
-        powersOf2.add(1);
-        multiplesOfB.add(b);
-        while (powersOf2.get(powersOf2.size() - 1) < a) {
-            powersOf2.add(powersOf2.get(powersOf2.size() - 1) * 2);
-            multiplesOfB.add(multiplesOfB.get(multiplesOfB.size() - 1) * 2);
+    public static int[] multiplicacion_egipcia(int[] k, int[] l) {
+        BigInteger a = convertirArregloANumeroBig(k);
+        BigInteger b = convertirArregloANumeroBig(l);
+        List<BigInteger> potencias_2 = new ArrayList<>();
+        List<BigInteger> multiplos_de_b = new ArrayList<>();
+        potencias_2.add(BigInteger.ONE);
+        multiplos_de_b.add(b);
+        while (potencias_2.get(potencias_2.size() - 1).compareTo(a) < 0) {
+            potencias_2.add(potencias_2.get(potencias_2.size() - 1).multiply(BigInteger.TWO));
+            multiplos_de_b.add(multiplos_de_b.get(multiplos_de_b.size() - 1).multiply(BigInteger.TWO));
         }
-        int result = 0;
-        for (int i = powersOf2.size() - 1; i >= 0; i--) {
-            if (powersOf2.get(i) <= a) {
-                a -= powersOf2.get(i);
-                result += multiplesOfB.get(i);
+        BigInteger result = BigInteger.ZERO;
+        for (int i = potencias_2.size() - 1; i >= 0; i--) {
+            if (potencias_2.get(i).compareTo(a) <= 0) {
+                a = a.subtract(potencias_2.get(i));
+                result = result.add(multiplos_de_b.get(i));
             }
         }
+       // return bigIntegerToIntArray(result);
 
-
-        return convertirNumeroAArreglo(result);
+        return null;
+    }
+    public static int[] bigIntegerToIntArray(BigInteger bigInt) {
+        String bigIntStr = bigInt.toString();
+        int[] intArray = new int[bigIntStr.length()];
+        for (int i = 0; i < bigIntStr.length(); i++) {
+            intArray[i] = Character.getNumericValue(bigIntStr.charAt(i));
+        }
+        return intArray;
     }
 
-    public static int convertirArregloANumero(int[] arreglo) {
-        int numero = 0;
-
-        for (int i = 0; i < arreglo.length; i++) {
-            numero = numero * 10 + arreglo[i];
+    private static BigInteger convertirArregloANumeroBig(int[] arr) {
+        BigInteger num = BigInteger.ZERO;
+        for (int i = 0; i < arr.length; i++) {
+            num = num.multiply(BigInteger.TEN).add(BigInteger.valueOf(arr[i]));
         }
-
-        return numero;
-    }
-
-    public static int[] convertirNumeroAArreglo(int numero) {
-        int longitud = obtenerLongitud(numero);
-        int[] arreglo = new int[longitud];
-
-        for (int i = longitud - 1; i >= 0; i--) {
-            arreglo[i] = numero % 10;
-            numero /= 10;
-        }
-
-        return arreglo;
-    }
-
-    public static int obtenerLongitud(int numero) {
-        if (numero == 0) {
-            return 1;
-        }
-
-        int longitud = 0;
-        while (numero != 0) {
-            longitud++;
-            numero /= 10;
-        }
-
-        return longitud;
+        return num;
     }
 }
