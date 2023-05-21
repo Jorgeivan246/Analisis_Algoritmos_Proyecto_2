@@ -11,70 +11,7 @@ public class Main {
     public static ArrayList<Integer> nDigitosLeer = new ArrayList();
 
     public static void main(String[] args) throws IOException {
-/**
-           generarNumero(5);
 
-
-        int[] numero1 = null;
-        int[]  result = null;
-        int[]  result2 = null;
-
-
-        ArrayList<Integer> resultArraylist = new ArrayList<>();
-
-        ArrayList<Integer> result2Arraylist = new ArrayList<>();
-
-        ArrayList<Integer> numeroList = new ArrayList<>();
-
-        numero1 = leerArchivo1(5);
-
-        numeroList=leerArchivo2(5);
-
-
-
-
-
-        Algoritmo6 algo6=new Algoritmo6();
-
-        Algoritmo7 algo7=new Algoritmo7();
-
-        Algoritmo8 algo8=new Algoritmo8();
-
-        Algoritmo9 algo9=new Algoritmo9();
-
-
-        resultArraylist=algo6.multiplicar(numeroList,numeroList);
-
-        result=algo9.Multi_Rusa(numero1,numero1);
-
-/**
-        System.out.print("Result Algoritmo6: ");
-
-        for (int i = 0; i <resultArraylist.size() ; i++) {
-            System.out.print(""+resultArraylist.get(i)+ " ");
-        }
- **/
-
-/**
-
-        System.out.print("Result Algoritmo8: ");
-        for (int i = 0; i <resultArraylist.size() ; i++) {
-            System.out.print(""+resultArraylist.get(i)+ " ");
-        }
-
-
-        System.out.print("Result Algoritmo9: ");
-        for (int i = 0; i < result.length; i++) {
-            System.out.print(result[i] + " ");
-        }
-        System.out.println(); // Imprimir una línea en blanco después de los resultados de Algoritmo3
-
-        System.out.print("Result Algoritmo5: ");
-        for (int i = 0; i < result2.length; i++) {
-            System.out.print(result2[i] + " ");
-        }
-        System.out.println();
- **/
 
         nDigitosLeer.add(1000);
         nDigitosLeer.add(1000);
