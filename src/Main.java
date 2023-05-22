@@ -45,13 +45,13 @@ public class Main {
         nDigitosLeer3.add(22000);
         nDigitosLeer3.add(25000);
 
-        enviarDatosAlServidor();
+        // enviarDatosAlServidor();
         probarAlgoritmo();
 
     }
 
     private static void probarAlgoritmo() throws IOException {
-        Algoritmo11 algo11 = new Algoritmo11();
+        Algoritmo2 algo11 = new Algoritmo2();
 
         // generarNumero(5);
         ArrayList<Integer> numero1 = new ArrayList<Integer>();
@@ -59,11 +59,11 @@ public class Main {
 
         int[] result3 = null;
         int[] result4 = null;
-        // numero1 = leerArchivo2(65);
+        numero1 = leerArchivo2(400000);
 
-        result3 = leerArchivo1(25000);
+        // result3 = leerArchivo1(400000);
 
-        result4 = algo11.multiplicar(result3, result3);
+        result = algo11.multiplicar(numero1, numero1);
 
         // result.forEach(elemento -> System.out.print(elemento + " "));
         System.out.println(Arrays.toString(result4));
@@ -246,16 +246,15 @@ public class Main {
                         break;
 
                     case 10:
-                        /**
-                         * numero = leerArchivo1((nDigitosLeer.get(l))/2);
-                         * 
-                         * System.out.println("Entra al case 11");
-                         * tiempoInicial = System.currentTimeMillis();
-                         * result = algo11.multiplicar(numero, numero);
-                         * tiempoFinal = System.currentTimeMillis();
-                         * tiempoTotal = ((tiempoFinal - tiempoInicial));
-                         * nDigitos = nDigitosLeer.get(l);
-                         **/
+                        numero = leerArchivo1((nDigitosLeer.get(l)) / 2);
+
+                        System.out.println("Entra al case 11");
+                        tiempoInicial = System.currentTimeMillis();
+                        result = algo11.multiplicar(numero, numero);
+                        tiempoFinal = System.currentTimeMillis();
+                        tiempoTotal = ((tiempoFinal - tiempoInicial));
+                        nDigitos = nDigitosLeer.get(l);
+
                         break;
 
                     case 11:
