@@ -2,7 +2,7 @@ import java.math.BigInteger;
 
 public class Algoritmo9 {
 
-    public int[] Multi_Rusa(int []a, int []b){
+    public int[] multiplicar(int []a, int []b){
 
         BigInteger i=convertirNumero(a);
         BigInteger j=convertirNumero(b);

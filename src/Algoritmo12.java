@@ -33,7 +33,10 @@ public class Algoritmo12 {
     }
 
     public int[] multiplicar(int[] x, int[] y){
-        long resultado = karatsuba(convertirALong(x), convertirALong(y));
+
+        long a=convertirALong(x);
+        long b=convertirALong(x);
+        long resultado = karatsuba(a, b);
         return convertirAArray(resultado);
     }
 
@@ -46,13 +49,15 @@ public class Algoritmo12 {
         return resultadoArray;
     }
 
-    private long convertirALong(int[] x) {
-        String numero = "";
-        for (int i = 0; i < x.length; i++) {
-            numero += x[i];
+    public long convertirALong(int[] arr) {
+        long result = 0;
+        for (int i = 0; i < arr.length; i++) {
+            result = result * 10 + arr[i];
         }
-        return Long.parseLong(numero);
+        return result;
     }
+
+
 
     
 }

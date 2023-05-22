@@ -3,6 +3,7 @@ import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
 
@@ -10,33 +11,51 @@ public class Main {
 
     public static ArrayList<Integer> nDigitosLeer = new ArrayList();
 
+    public static ArrayList<Integer> nDigitosLeer2 = new ArrayList();
+
     public static void main(String[] args) throws IOException {
-/**
-        nDigitosLeer.add(1000);
-        nDigitosLeer.add(1000);
-        nDigitosLeer.add(1000);
-        nDigitosLeer.add(1000);
-        nDigitosLeer.add(1000);
-        nDigitosLeer.add(1000);
-        nDigitosLeer.add(1000);
-        nDigitosLeer.add(1000);
+
+        nDigitosLeer2.add(50);
+        nDigitosLeer2.add(50);
+        nDigitosLeer2.add(50);
+        nDigitosLeer2.add(50);
+        nDigitosLeer2.add(50);
+        nDigitosLeer2.add(50);
+        nDigitosLeer2.add(50);
+        nDigitosLeer2.add(50);
+
+        nDigitosLeer.add(50000);
+        nDigitosLeer.add(50000);
+        nDigitosLeer.add(50000);
+        nDigitosLeer.add(50000);
+        nDigitosLeer.add(50000);
+        nDigitosLeer.add(50000);
+        nDigitosLeer.add(50000);
+        nDigitosLeer.add(50000);
          enviarDatosAlServidor();
-**/
-       probarAlgoritmo();
+
+   //  probarAlgoritmo();
 
     }
 
     private static void probarAlgoritmo() throws IOException {
-        Algoritmo3 algo3 = new Algoritmo3();
-       generarNumero(79);
-        int[] numero1 = leerArchivo1(79);
+        Algoritmo4 algo4 = new Algoritmo4();
 
-        int[]  resultado = algo3.multiplicar(numero1, numero1);
-        
-        for(int i = 0; i < resultado.length; i++){
-            System.out.print(resultado[i]);
-        }
-        
+    //  generarNumero(5);
+        ArrayList<Integer> numero1 = new ArrayList<Integer>();
+        ArrayList<Integer> result = new ArrayList<Integer>();
+
+        int[] numero2,result2;
+   //   numero1 = leerArchivo2(65);
+
+        numero1 = leerArchivo2(60);
+
+        result=algo4.multiplicar(numero1,numero1);
+
+
+        result.forEach(elemento -> System.out.print(elemento + " "));
+       // System.out.println(Arrays.toString(result));
+
     }
 
     public static void enviarDatosAlServidor() throws IOException {
@@ -75,7 +94,7 @@ public class Main {
 
         Algoritmo14 algo14 = new Algoritmo14();
 
-        double tiempoInicial = 0, tiempoTotal = 0, tiempoFinal = 0;
+        double tiempoInicial = 0.0; double tiempoTotal = 0.0; double tiempoFinal = 0.0;
 
         int[] numero = null;
 
@@ -91,64 +110,67 @@ public class Main {
 
         long nDigitos = 0;
 
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 14; i++) {
 
-            for (int l = 0; l < nDigitosLeer.size() - 4; l++) {
+            for (int l = 0; l < nDigitosLeer.size() ; l++) {
 
                 switch (i) {
 
                     case 0:
                         numero = leerArchivo1(nDigitosLeer.get(l) );
-
-                        System.out.println("Leyó el numero " + numero.length);
-                        tiempoInicial = System.currentTimeMillis();
+                        System.out.println("Entro al caso 1");
+                        tiempoInicial = System.nanoTime();
                         result = algo1.multiplicar(numero, numero);
-                        tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial) );
+                        tiempoFinal = System.nanoTime();
+                        tiempoTotal = (tiempoFinal - tiempoInicial) / 1_000_000.0; ;
                         nDigitos = nDigitosLeer.get(l);
                         break;
                     case 1:
-                        numero3 = leerArchivo2(nDigitosLeer.get(l));
+                        System.out.println("Entro al caso 2");
+
+                        numero3 = leerArchivo2(nDigitosLeer2.get(l));
                         tiempoInicial = System.currentTimeMillis();
+                        System.out.println("EL tiempo capturado es "+tiempoInicial);
                         result2 = algo2.multiplicar(numero3, numero3);
                         tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial) );
-                        nDigitos = nDigitosLeer.get(l);
+                        tiempoTotal =  ((tiempoFinal - tiempoInicial) );
+                        System.out.println("EL tiempo total es "+tiempoTotal);
+                        nDigitos = nDigitosLeer2.get(l);
                         break;
 
                     case 2:
-                        System.out.println("ENtro al caso 3");
-                        numero = leerArchivo1((nDigitosLeer.get(l)));
+                        System.out.println("Entro al caso 3");
+                        numero = leerArchivo1((nDigitosLeer2.get(l)));
 
                         tiempoInicial = System.currentTimeMillis();
-                        //result = algo3.multiplicar(numero, numero);
+                        result = algo3.multiplicar(numero, numero);
                         tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial));
-                        nDigitos = nDigitosLeer.get(l);
+                        tiempoTotal = ((tiempoFinal - tiempoInicial));
+                        nDigitos = nDigitosLeer2.get(l);
 
                         break;
                     case 3:
+                        System.out.println("Entro al caso 4");
+                        numero3 = leerArchivo2((nDigitosLeer2.get(l)));
 
-                        numero3 = leerArchivo2((nDigitosLeer.get(l)));
-
-                        System.out.println("Entra al case 3");
+                        System.out.println("Leyo un numero con " + numero3.size());
                         tiempoInicial = System.currentTimeMillis();
                         result2 = algo4.multiplicar(numero3, numero3);
                         tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial));
-                        nDigitos = nDigitosLeer.get(l);
+                        tiempoTotal =  ((tiempoFinal - tiempoInicial));
+                        nDigitos = nDigitosLeer2.get(l);
                         break;
 
                     case 4:
-
-                        numero = leerArchivo1(nDigitosLeer.get(l));
+                        System.out.println("Entro en el 5");
+                        numero = leerArchivo1(nDigitosLeer2.get(l));
 
                         tiempoInicial = System.currentTimeMillis();
                         result = algo5.multiplicar(numero, numero);
                         tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial));
-                        nDigitos = nDigitosLeer.get(l);
-                        System.out.println("Entro en el 5");
+                        tiempoTotal =  ((tiempoFinal - tiempoInicial));
+                        nDigitos = nDigitosLeer2.get(l);
+
                         break;
                     case 5:
 
@@ -163,57 +185,58 @@ public class Main {
                         break;
                     case 6:
 
-                        numero = leerArchivo1((nDigitosLeer.get(l)));
+                        numero = leerArchivo1((nDigitosLeer2.get(l)));
 
-                        System.out.println("Entra al case 6");
+                        System.out.println("Entra al case 7");
                         tiempoInicial = System.currentTimeMillis();
                         result = algo7.multiplicar(numero, numero);
                         tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial) );
-                        nDigitos = nDigitosLeer.get(l);
+                        tiempoTotal =  ((tiempoFinal - tiempoInicial) );
+                        nDigitos = nDigitosLeer2.get(l);
                         break;
 
                     case 7:
-                        System.out.println("Entro al 7");
-                        numero3 = leerArchivo2((nDigitosLeer.get(l)));
-                        System.out.println("Entra al case 7");
+                        System.out.println("Entra al case 8");
+                        numero3 = leerArchivo2((nDigitosLeer2.get(l)));
+
                         tiempoInicial = System.currentTimeMillis();
                         result2 = algo8.multiplicar(numero3, numero3);
                         tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial) );
-                        nDigitos = nDigitosLeer.get(l);
+                        tiempoTotal =  ((tiempoFinal - tiempoInicial) );
+                        nDigitos = nDigitosLeer2.get(l);
 
                         break;
                     case 8:
                         numero = leerArchivo1((nDigitosLeer.get(l)));
 
-                        System.out.println("Entra al case 8");
+                        System.out.println("Entra al case 9");
                         tiempoInicial = System.currentTimeMillis();
-                        result = algo9.Multi_Rusa(numero, numero);
+                        result = algo9.multiplicar(numero, numero);
                         tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial) );
+                        tiempoTotal =  ((tiempoFinal - tiempoInicial) );
                         nDigitos = nDigitosLeer.get(l);
                         break;
                     case 9:
+                        System.out.println("Entra al case 10");
                         numero = leerArchivo1((nDigitosLeer.get(l)));
 
-                        System.out.println("Entra al case 9");
+
                         tiempoInicial = System.currentTimeMillis();
-                        result = algo10.multiplicacionHindu(numero, numero);
+                        result = algo10.multiplicar(numero, numero);
                         tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial));
+                        tiempoTotal =  ((tiempoFinal - tiempoInicial));
                         nDigitos = nDigitosLeer.get(l);
 
                         break;
 
                     case 10:
-                        numero = leerArchivo1((nDigitosLeer.get(l)));
+                        numero = leerArchivo1((nDigitosLeer.get(l))/2);
 
-                        System.out.println("Entra al case 9");
+                        System.out.println("Entra al case 11");
                         tiempoInicial = System.currentTimeMillis();
-                        result = algo11.multiplicacion_egipcia(numero, numero);
+                        result = algo11.multiplicar(numero, numero);
                         tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial));
+                        tiempoTotal =  ((tiempoFinal - tiempoInicial));
                         nDigitos = nDigitosLeer.get(l);
 
                         break;
@@ -221,11 +244,11 @@ public class Main {
                     case 11:
                         numero = leerArchivo1((nDigitosLeer.get(l)));
 
-                        System.out.println("Entra al case 9");
+                        System.out.println("Entra al case 12");
                         tiempoInicial = System.currentTimeMillis();
                         result = algo12.multiplicar(numero, numero);
                         tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial));
+                        tiempoTotal =  ((tiempoFinal - tiempoInicial));
                         nDigitos = nDigitosLeer.get(l);
 
                         break;
@@ -233,11 +256,11 @@ public class Main {
                     case 12:
                         numero = leerArchivo1((nDigitosLeer.get(l)));
 
-                        System.out.println("Entra al case 9");
+                        System.out.println("Entra al case 13");
                         tiempoInicial = System.currentTimeMillis();
                         result = algo13.multiplicar(numero, numero);
                         tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = (long) ((tiempoFinal - tiempoInicial) );
+                        tiempoTotal =  ((tiempoFinal - tiempoInicial) );
                         nDigitos = nDigitosLeer.get(l);
 
                         break;
@@ -245,11 +268,11 @@ public class Main {
                     case 13:
                     numero = leerArchivo1((nDigitosLeer.get(l)));
 
-                    System.out.println("Entra al case 9");
+                    System.out.println("Entra al case 14");
                     tiempoInicial = System.currentTimeMillis();
                     result = algo14.multplicar(numero, numero);
                     tiempoFinal = System.currentTimeMillis();
-                    tiempoTotal = (long) ((tiempoFinal - tiempoInicial ));
+                    tiempoTotal =  ((tiempoFinal - tiempoInicial ));
                     nDigitos = nDigitosLeer.get(l);
 
                     break;
