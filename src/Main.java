@@ -13,48 +13,62 @@ public class Main {
 
     public static ArrayList<Integer> nDigitosLeer2 = new ArrayList();
 
+    public static ArrayList<Integer> nDigitosLeer3 = new ArrayList();
+
     public static void main(String[] args) throws IOException {
+        generarNumero(10000);
 
-        nDigitosLeer2.add(50);
-        nDigitosLeer2.add(50);
-        nDigitosLeer2.add(50);
-        nDigitosLeer2.add(50);
-        nDigitosLeer2.add(50);
-        nDigitosLeer2.add(50);
-        nDigitosLeer2.add(50);
+        nDigitosLeer2.add(15);
+        nDigitosLeer2.add(20);
+        nDigitosLeer2.add(25);
+        nDigitosLeer2.add(30);
+        nDigitosLeer2.add(35);
+        nDigitosLeer2.add(40);
+        nDigitosLeer2.add(45);
         nDigitosLeer2.add(50);
 
-        nDigitosLeer.add(50000);
-        nDigitosLeer.add(50000);
-        nDigitosLeer.add(50000);
-        nDigitosLeer.add(50000);
-        nDigitosLeer.add(50000);
-        nDigitosLeer.add(50000);
-        nDigitosLeer.add(50000);
-        nDigitosLeer.add(50000);
+
+        nDigitosLeer.add(100000);
+        nDigitosLeer.add(100000);
+        nDigitosLeer.add(100000);
+        nDigitosLeer.add(100000);
+        nDigitosLeer.add(100000);
+        nDigitosLeer.add(100000);
+        nDigitosLeer.add(100000);
+        nDigitosLeer.add(100000);
+
+        nDigitosLeer3.add(11000);
+        nDigitosLeer3.add(12000);
+        nDigitosLeer3.add(14000);
+        nDigitosLeer3.add(16000);
+        nDigitosLeer3.add(18000);
+        nDigitosLeer3.add(20000);
+        nDigitosLeer3.add(22000);
+        nDigitosLeer3.add(25000);
+
          enviarDatosAlServidor();
-
-   //  probarAlgoritmo();
+   probarAlgoritmo();
 
     }
 
     private static void probarAlgoritmo() throws IOException {
-        Algoritmo4 algo4 = new Algoritmo4();
+        Algoritmo11 algo11 = new Algoritmo11();
 
     //  generarNumero(5);
         ArrayList<Integer> numero1 = new ArrayList<Integer>();
         ArrayList<Integer> result = new ArrayList<Integer>();
 
-        int[] numero2,result2;
+        int[] result3=null;
+        int[] result4=null;
    //   numero1 = leerArchivo2(65);
 
-        numero1 = leerArchivo2(60);
+        result3 = leerArchivo1(25000);
 
-        result=algo4.multiplicar(numero1,numero1);
+        result4=algo11.multiplicar(result3,result3);
 
 
-        result.forEach(elemento -> System.out.print(elemento + " "));
-       // System.out.println(Arrays.toString(result));
+      //  result.forEach(elemento -> System.out.print(elemento + " "));
+        System.out.println(Arrays.toString(result4));
 
     }
 
@@ -93,6 +107,8 @@ public class Main {
         Algoritmo13 algo13 = new Algoritmo13();
 
         Algoritmo14 algo14 = new Algoritmo14();
+
+        Algoritmo15 algo15 = new Algoritmo15();
 
         double tiempoInicial = 0.0; double tiempoTotal = 0.0; double tiempoFinal = 0.0;
 
@@ -230,6 +246,7 @@ public class Main {
                         break;
 
                     case 10:
+                        /**
                         numero = leerArchivo1((nDigitosLeer.get(l))/2);
 
                         System.out.println("Entra al case 11");
@@ -238,7 +255,7 @@ public class Main {
                         tiempoFinal = System.currentTimeMillis();
                         tiempoTotal =  ((tiempoFinal - tiempoInicial));
                         nDigitos = nDigitosLeer.get(l);
-
+**/
                         break;
 
                     case 11:
@@ -276,6 +293,18 @@ public class Main {
                     nDigitos = nDigitosLeer.get(l);
 
                     break;
+
+                    case 14:
+                        numero = leerArchivo1((nDigitosLeer.get(l)));
+
+                        System.out.println("Entra al case 14");
+                        tiempoInicial = System.currentTimeMillis();
+                        result = algo15.multplicar(numero, numero);
+                        tiempoFinal = System.currentTimeMillis();
+                        tiempoTotal =  ((tiempoFinal - tiempoInicial ));
+                        nDigitos = nDigitosLeer.get(l);
+
+                        break;
 
                 }
                 direccion = url + "fi=" + fila + "&" + "co=" + columna + "&" + "ti=" + tiempoTotal + "&" + "ci="
