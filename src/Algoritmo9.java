@@ -2,26 +2,27 @@ import java.math.BigInteger;
 
 public class Algoritmo9 {
 
-    public int[] multiplicar(int []a, int []b){
+    public int[] multiplicar(int[] a, int[] b) {
 
-        BigInteger i=convertirNumero(a);
-        BigInteger j=convertirNumero(b);
+        BigInteger i = convertirNumero(a);
+        BigInteger j = convertirNumero(b);
         BigInteger aux = new BigInteger("2");
         BigInteger aux2 = new BigInteger("0");
-        BigInteger c =new BigInteger("0");
+        BigInteger c = new BigInteger("0");
 
-        int[] result=null;
-        while(i.intValue()!=0){
-            if(i.intValue() %2 != 0){
-                c=   c.add(j);
+        int[] result = null;
+        while (i.intValue() != 0) {
+            if (i.intValue() % 2 != 0) {
+                c = c.add(j);
             }
-            i=i.divide(aux);
-            j=j.multiply(aux);
+            i = i.divide(aux);
+            j = j.multiply(aux);
 
         }
-        result=bigIntegerToIntArray(c);
+        result = bigIntegerToIntArray(c);
         return result;
     }
+
     public int[] bigIntegerToIntArray(BigInteger number) {
         String numberString = number.toString();
         int[] result = new int[numberString.length()];
@@ -32,6 +33,7 @@ public class Algoritmo9 {
 
         return result;
     }
+
     public BigInteger convertirNumero(int[] numeros) {
         StringBuilder numeroString = new StringBuilder();
 
@@ -41,6 +43,5 @@ public class Algoritmo9 {
 
         return new BigInteger(numeroString.toString());
     }
-  
 
 }

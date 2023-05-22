@@ -2,6 +2,7 @@ public class Algoritmo13 {
 
     /**
      * Multiplica dos números grandes representados como cadenas de caracteres.
+     * 
      * @param num1 El primer número a multiplicar.
      * @param num2 El segundo número a multiplicar.
      * @return El resultado de la multiplicación como una cadena de caracteres.
@@ -25,13 +26,13 @@ public class Algoritmo13 {
                 int digito1 = num1.charAt(i) - '0';
                 int digito2 = num2.charAt(j) - '0';
                 // Multiplicar los dígitos y sumar el resultado al arreglo
-                resultado[i+j] += digito1 * digito2;
+                resultado[i + j] += digito1 * digito2;
             }
         }
 
         // Acomodar los números mayores a 9
         int acarreo = 0;
-        for (int i = 0; i < n1+n2; i++) {
+        for (int i = 0; i < n1 + n2; i++) {
             resultado[i] += acarreo;
             acarreo = resultado[i] / 10;
             resultado[i] %= 10;
@@ -54,27 +55,29 @@ public class Algoritmo13 {
 
     /**
      * Invierte una cadena de caracteres.
+     * 
      * @param s La cadena a invertir.
      * @return La cadena invertida.
      */
     public String invertirCadena(String s) {
         char[] runas = s.toCharArray();
         int n = runas.length;
-        for (int i = 0; i < n/2; i++) {
+        for (int i = 0; i < n / 2; i++) {
             char temp = runas[i];
-            runas[i] = runas[n-i-1];
-            runas[n-i-1] = temp;
+            runas[i] = runas[n - i - 1];
+            runas[n - i - 1] = temp;
         }
         return new String(runas);
     }
 
-    public int[] multiplicar(int[] x, int[] y){
+    public int[] multiplicar(int[] x, int[] y) {
         String resultado = multiplicarUsandoCadenas(convertirAString(x), convertirAString(y));
         return convertirAArray(resultado);
     }
 
     /**
      * Convierte una cadena de caracteres en un arreglo de enteros.
+     * 
      * @param resultado La cadena a convertir.
      * @return El arreglo de enteros.
      */
@@ -89,6 +92,7 @@ public class Algoritmo13 {
 
     /**
      * Convierte un arreglo de enteros en una cadena de caracteres.
+     * 
      * @param x El arreglo de enteros a convertir.
      * @return La cadena de caracteres.
      */

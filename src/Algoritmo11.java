@@ -24,8 +24,8 @@ public class Algoritmo11 {
         }
         return bigIntegerToIntArray(result);
 
-
     }
+
     public int[] bigIntegerToIntArray(BigInteger bigInt) {
         String bigIntStr = bigInt.toString();
         int[] intArray = new int[bigIntStr.length()];

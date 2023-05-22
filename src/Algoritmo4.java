@@ -2,9 +2,8 @@ import java.util.ArrayList;
 
 public class Algoritmo4 {
 
-
-
-    // Función que recibe dos ArrayList de Integer y devuelve otro ArrayList de Integer con el resultado de la multiplicación americana recursiva
+    // Función que recibe dos ArrayList de Integer y devuelve otro ArrayList de
+    // Integer con el resultado de la multiplicación americana recursiva
     public ArrayList<Integer> multiplicar(ArrayList<Integer> a, ArrayList<Integer> b) {
         // Crear un ArrayList para almacenar el resultado
         ArrayList<Integer> resultado = new ArrayList<Integer>();
@@ -19,8 +18,11 @@ public class Algoritmo4 {
         return resultado;
     }
 
-    // Función auxiliar recursiva que recibe dos ArrayList de Integer, otro ArrayList de Integer para el resultado y dos índices para los dígitos a multiplicar
-    private void multiplicarAux(ArrayList<Integer> a, ArrayList<Integer> b, ArrayList<Integer> resultado, int i, int j) {
+    // Función auxiliar recursiva que recibe dos ArrayList de Integer, otro
+    // ArrayList de Integer para el resultado y dos índices para los dígitos a
+    // multiplicar
+    private void multiplicarAux(ArrayList<Integer> a, ArrayList<Integer> b, ArrayList<Integer> resultado, int i,
+            int j) {
         // Caso base: si alguno de los índices es negativo, terminar la recursión
         if (i < 0 || j < 0) {
             return;
@@ -37,7 +39,7 @@ public class Algoritmo4 {
             resultado.set(indice - 1, resultado.get(indice - 1) + cociente);
         }
         // Llamar a la función auxiliar recursiva con los índices anteriores
-        if(j == 0){
+        if (j == 0) {
             j = b.size() - 1;
             multiplicarAux(a, b, resultado, i - 1, j);
         } else {
