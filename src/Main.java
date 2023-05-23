@@ -26,15 +26,15 @@ public class Main {
         nDigitosLeer2.add(40);
         nDigitosLeer2.add(45);
         nDigitosLeer2.add(50);
-        generarNumero(150000);
+
+        nDigitosLeer.add(50000);
+        nDigitosLeer.add(100000);
         nDigitosLeer.add(150000);
         nDigitosLeer.add(200000);
+        nDigitosLeer.add(250000);
         nDigitosLeer.add(300000);
         nDigitosLeer.add(350000);
-        nDigitosLeer.add(300000);
-        nDigitosLeer.add(400000);
-        nDigitosLeer.add(450000);
-        nDigitosLeer.add(400000);
+        nDigitosLeer.add(370000);
 
         nDigitosLeer3.add(11000);
         nDigitosLeer3.add(12000);
