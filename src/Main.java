@@ -144,12 +144,12 @@ public class Main {
                     case 1:
 
 
-                        numero3 = leerArchivo2(nDigitosLeer2.get(l));
+                        numero3 = leerArchivo2(nDigitosLeer.get(l));
                         tiempoInicial = System.nanoTime();
                          algo2.multiplicar(numero3, numero3);
                         tiempoFinal = System.nanoTime();
                         tiempoTotal = (tiempoFinal - tiempoInicial) / 1_000_000.0;
-                        nDigitos = nDigitosLeer2.get(l);
+                        nDigitos = nDigitosLeer.get(l);
                         break;
 
                     case 2:
@@ -173,13 +173,13 @@ public class Main {
 
                     case 4:
                         System.out.println("Entro en el 5");
-                        numero = leerArchivo1(nDigitosLeer2.get(l));
+                        numero = leerArchivo1(nDigitosLeer.get(l));
 
                         tiempoInicial = System.nanoTime();
                         result = algo5.multiplicar(numero, numero);
                         tiempoFinal = System.nanoTime();
                         tiempoTotal = (tiempoFinal - tiempoInicial) / 1_000_000.0;
-                        nDigitos = nDigitosLeer2.get(l);
+                        nDigitos = nDigitosLeer.get(l);
 
                         break;
                     case 5:
