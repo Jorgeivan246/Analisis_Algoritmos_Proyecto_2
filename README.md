@@ -14,6 +14,6 @@ El objetivo de este proyecto es implementar diferentes algoritmos de multiplicac
 Entre los algoritmos implementados están secuenciales. 
 
 
-En el siguiente diagrama de componentes se puede observar las relaciones entre las partes que hacen parte del proyecto
+En el siguiente diagrama de componentes se puede observar las relaciones entre las partes involucradas
 
 ![Diagrama de componentes ](resources/components_java_ana_2.png)
